@@ -1,0 +1,3 @@
+# fgets vs fscanf
+
+Calls to `fscanf` can leave your pointer in a bad place sometimes, and so it is not recommended to be used in C to read formatted files. In particular, should an input or matching failure occur, the pointer is left in a different place that it would have been if the line had been read correctly. To alleviate this, it is recommended to read the file line by line with `fgets` and then use `sscanf` to assign the formatted input to variables. This keeps the file reading and format matching seperated so that you can just skip bad lines and continue reading the rest of the file, or handle the formatting bug in the input file appropriately while also continuing to read the file or close the file appropriately.
